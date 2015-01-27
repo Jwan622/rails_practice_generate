@@ -1,0 +1,10 @@
+<div id="errors">
+  <%= flash[:error] %>
+
+</div>
+
+<%= form_for(:play, url: plays_path) do |f| %>
+  <%= f.label :word %>
+  <%= f.text_field :word %>
+  <%= f.submit "Play!" %>
+<% end %>

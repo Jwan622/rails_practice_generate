@@ -1,4 +1,7 @@
 class Play < ActiveRecord::Base
+  before_save { self.word = word.downcase }
+
+  validates :word, format: { with: /\A[a-zA-Z]+\Z/ }
 
   def letter_scores
     {"A"=>1, "B"=>3, "C"=>3, "D"=>2, "E"=>1, "F"=>4, "G"=>2, "H"=>4, "I"=>1, "J"=>8,
@@ -8,5 +11,6 @@ class Play < ActiveRecord::Base
 
   def score
     word.upcase.chars.inject(0){|sum, letter| sum + letter_scores[letter]}
+    #it's trying to coerce letter_scores[letter] which = nil to fixnum which doesn't work.
   end
 end

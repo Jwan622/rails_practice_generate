@@ -1,10 +1,12 @@
 <h1>Scrabble-Web</h1>
 
-<%= link_to "Play New Word", '#' %>
+<%= link_to "Play New Word", '/plays/new' %>
 
 <div id="previous_words">
   <h3>Previous Words</h3>
   <ul id="plays">
-    <li>Previous words go here</li>
+    <% @plays.each do |play| %>
+      <li>word: <%= play.word %> score: <%= play.score %></li>
+    <% end %>
   </ul>
 </div>
